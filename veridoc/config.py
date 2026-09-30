@@ -2,7 +2,10 @@
 
 import os
 
-LLM_MODEL = os.getenv("VERIDOC_LLM_MODEL", "llama-3.3-70b-versatile")
+# llama-3.3-70b-versatile was retired from Groq (model_not_found, Sept 2026); gpt-oss-120b replaces it.
+LLM_MODEL = os.getenv("VERIDOC_LLM_MODEL", "openai/gpt-oss-120b")
+# gpt-oss models spend hidden "reasoning" tokens; keep them low for latency and token budget.
+LLM_REASONING_EFFORT = os.getenv("VERIDOC_REASONING_EFFORT", "low")
 EMBED_MODEL = os.getenv("VERIDOC_EMBED_MODEL", "all-MiniLM-L6-v2")
 NLI_MODEL = os.getenv("VERIDOC_NLI_MODEL", "cross-encoder/nli-deberta-v3-small")
 

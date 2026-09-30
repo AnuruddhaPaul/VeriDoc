@@ -34,6 +34,8 @@ class GroqLLM:
         import groq
 
         kwargs = {"response_format": {"type": "json_object"}} if json_mode else {}
+        if self.model.startswith("openai/gpt-oss") and config.LLM_REASONING_EFFORT:
+            kwargs["reasoning_effort"] = config.LLM_REASONING_EFFORT
         for attempt in range(self.retries + 1):
             try:
                 response = self._client.chat.completions.create(

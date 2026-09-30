@@ -183,3 +183,14 @@ def test_nli_verifier_with_fake_predictor():
 def test_nli_no_claims_raises():
     with pytest.raises(VerificationError):
         NLIVerifier(predict=lambda p: [0.0] * len(p)).verify("Ok.", [])
+
+
+def test_nli_scores_single_sentence_premises():
+    """Live finding: the NLI model entails a claim from one sentence but not from a 2-sentence window."""
+    def predict(pairs):  # entails only when the premise holds the leave sentence WITHOUT its neighbour
+        return [0.95 if "25 days" in premise and "Unused" not in premise else 0.02 for premise, hyp in pairs]
+
+    llm = ScriptedLLM("Employees get 25 days of leave [1].")
+    app = make_app(llm, verifier=NLIVerifier(predict=predict, window=3))
+    r = app.ask("How many days of annual leave do employees get?")
+    assert r.status == GROUNDED
