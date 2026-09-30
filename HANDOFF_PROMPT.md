@@ -1,6 +1,6 @@
 # VeriDoc: hand-off brief for Claude Code (paste everything below the line)
 
-How to use: `git clone https://github.com/AnuruddhaPaul/veridoc`, `cd veridoc`, start Claude Code in the repo root, and paste the whole brief below the line as your first message. (This private repo holds only the project, on `main`, in the `VeriDoc/` folder.)
+How to use: `git clone https://github.com/AnuruddhaPaul/veridoc`, `cd veridoc`, start Claude Code in the repo root, and paste the whole brief below the line as your first message. (This private repo holds only the project, on `main`, at the repo root.)
 
 ---
 
@@ -9,7 +9,7 @@ You are taking over a student's final GenAI capstone project. It is due on the d
 ## 0. Ground rules (read first)
 
 1. **Never fabricate.** Every metric, test result, screenshot and log in the report must come from a real run you performed on this machine. If something fails, report the failure and put it in the report's test table. Do not smooth over it.
-2. **Never print, log or commit my Groq API key.** I will put it in `VeriDoc/.env` myself (`GROQ_API_KEY=...`). Do not echo it, and do not include it in screenshots, the report or Drive files.
+2. **Never print, log or commit my Groq API key.** I will put it in `.env` (repo root) myself (`GROQ_API_KEY=...`). Do not echo it, and do not include it in screenshots, the report or Drive files.
 3. **Security clean-up (do this early):** my older repo `AnuruddhaPaul/AGNTIC_AI` has tracked `.env` files (root and `digital_safety_agent/`) containing Groq keys, so those keys are exposed. Tell me to revoke them at console.groq.com and create a new one, and to run `git rm --cached` on those files in that old repo. This new repo has no `.env`; check that `.env` stays in `.gitignore`. Do not paste any old key anywhere.
 4. **Academic honesty:** the report must describe my own project and my own results, in clear plain English. Write the draft for me, but do not copy text from the sample report, and do not reuse its numbers. Its data is illustrative only.
 5. **Git:** this repo (`AnuruddhaPaul/veridoc`, private) starts with one commit on `main`. Work on a feature branch, commit in small steps with clear messages, and ask me before pushing to `main`. The project was originally developed in `AnuruddhaPaul/AGNTIC_AI` (branch `claude/final-project-submission-uiz8m1`, draft PR #2); that copy is now just a backup.
@@ -53,7 +53,7 @@ Reference material (read before writing anything):
 - **LLM verifier:** a second Groq call, in JSON mode, splits the answer into atomic claims. Each supported claim must cite a source number and a **verbatim quote**, and the code then string-matches that quote against the cited chunk. An invented quote demotes the claim to unsupported.
 - **NLI verifier:** a local entailment cross-encoder (`cross-encoder/nli-deberta-v3-small`) scores sliding 3-sentence windows of the chunks against each answer sentence. A claim is supported if the entailment probability is at least 0.5.
 
-**Repo layout (`VeriDoc/`):**
+**Repo layout (repo root):**
 ```
 app.py                  Streamlit UI (badge, claim-by-claim ✅/❌, highlighted evidence, baseline toggle)
 veridoc/ingest.py       PDF -> pages -> chunks
@@ -92,8 +92,8 @@ README.md, requirements*.txt, .env.example, .gitignore
 ## 4. Work plan (do in this order; tell me when each step is done)
 
 **Step 1: Environment**
-1. `cd VeriDoc && python -m venv .venv`, activate it, then `pip install -r requirements-dev.txt`.
-2. Confirm I have created `VeriDoc/.env` from `.env.example` with a fresh key. Never read the key back to me.
+1. `python -m venv .venv`, activate it, then `pip install -r requirements-dev.txt`.
+2. Confirm I have created `.env` from `.env.example` with a fresh key. Never read the key back to me.
 3. Run `pytest -q`. Expect 21 passing. Fix anything environment-specific.
 
 **Step 2: Live smoke test.** In a short script or the REPL, do one real `GroqLLM.complete` call, one real embedding, and one full `VeriDoc.ask` on `sample_docs/northwind_handbook.pdf` with the LLM verifier. Check that the JSON parses, the quote check works, and the statuses come out as expected. Fix prompt or parsing bugs found here. Keep the offline tests green, and add a test for every bug you fix.
@@ -122,7 +122,7 @@ Commit and push after each step. Update the README status honestly at the end.
 ## 5. Hosting (Streamlit Community Cloud, with fallback)
 
 1. Ask me to merge PR #2, or deploy from the branch. I do the GitHub and Streamlit login steps myself; give me exact click-by-click instructions.
-2. share.streamlit.io → New app → repository, branch, main file `VeriDoc/app.py`. Under Advanced settings → Secrets add `GROQ_API_KEY = "..."` (I paste it myself).
+2. share.streamlit.io → New app → repository, branch, main file `app.py`. Under Advanced settings → Secrets add `GROQ_API_KEY = "..."` (I paste it myself).
 3. Watch the build logs. If the app runs out of memory (about 1 GB on the free tier, and torch plus MiniLM plus the NLI model is tight):
    - first try a smaller hosted build: default the hosted app to the LLM verifier, load the NLI model lazily, and pin CPU-only torch in `requirements.txt`;
    - if that still fails, deploy to **Hugging Face Spaces** (Streamlit SDK, free 16 GB CPU): add the Spaces README metadata, set `GROQ_API_KEY` as a Space secret, and use that URL as the hosted link.

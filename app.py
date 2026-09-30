@@ -14,7 +14,6 @@ from veridoc.render import badge, escape_dollars, highlight_html
 ROOT = Path(__file__).parent
 SAMPLE_PDF = ROOT / "sample_docs" / "northwind_handbook.pdf"
 load_dotenv(ROOT / ".env")
-load_dotenv(ROOT.parent / ".env")
 
 st.set_page_config(page_title="VeriDoc", page_icon="🛡️", layout="wide")
 

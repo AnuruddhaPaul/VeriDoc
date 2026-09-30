@@ -78,7 +78,6 @@ def main() -> None:
     args = parser.parse_args()
 
     load_dotenv(ROOT / ".env")
-    load_dotenv(ROOT.parent / ".env")
     spec = json.loads(Path(args.questions).read_text())
     llm = GroqLLM()
     from veridoc.embeddings import SentenceTransformerEmbedder
