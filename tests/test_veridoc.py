@@ -211,3 +211,29 @@ def test_eval_scorer_accepts_number_words_and_unicode_spaces():
     assert mod.is_correct("up to three days per week", ["3"])
     assert mod.is_correct("within\u202f2\u202fhours", ["2 hours"])
     assert not mod.is_correct("up to four days", ["3"])
+
+
+def test_groq_falls_back_when_daily_token_cap_is_hit():
+    """Live finding: the free tier caps tokens per day; the app must degrade to another model, not crash."""
+    import groq
+    import httpx
+
+    from veridoc.llm import GroqLLM
+
+    calls = []
+
+    class Choice:
+        message = type("M", (), {"content": "ok"})()
+
+    class FakeCompletions:
+        def create(self, model, **kw):
+            calls.append(model)
+            if model == "primary":
+                response = httpx.Response(429, request=httpx.Request("POST", "http://x"))
+                raise groq.RateLimitError("Rate limit reached ... on tokens per day (TPD)", response=response, body=None)
+            return type("R", (), {"choices": [Choice()]})()
+
+    llm = GroqLLM(api_key="test", model="primary", fallback_models=["backup"])
+    llm._client = type("C", (), {"chat": type("Ch", (), {"completions": FakeCompletions()})()})()
+    assert llm.complete("s", "u") == "ok"
+    assert calls == ["primary", "backup"] and llm.last_model == "backup"

@@ -36,6 +36,7 @@ class Result:
     report: GroundingReport | None = None
     sources: list[Retrieved] = field(default_factory=list)
     timings: dict[str, float] = field(default_factory=dict)
+    model: str = ""  # which LLM produced the answer (differs from the default only after a rate-limit fallback)
 
     @property
     def abstained(self) -> bool:
@@ -71,6 +72,11 @@ class VeriDoc:
         return len(chunks)
 
     def ask(self, question: str) -> Result:
+        result = self._ask(question)
+        result.model = getattr(self.llm, "last_model", "")
+        return result
+
+    def _ask(self, question: str) -> Result:
         timings: dict[str, float] = {}
         t0 = time.perf_counter()
         retrieved = self.store.query(question, self.top_k)

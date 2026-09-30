@@ -144,7 +144,8 @@ def render_result(result):
                     unsafe_allow_html=True,
                 )
     if result.timings:
-        st.caption(" · ".join(f"{k} {v:.2f}s" for k, v in result.timings.items()))
+        model = f" · model {result.model}" if result.model else ""
+        st.caption(" · ".join(f"{k} {v:.2f}s" for k, v in result.timings.items()) + model)
 
 
 st.header("Ask your document")
