@@ -30,6 +30,7 @@ from veridoc import VeriDoc  # noqa: E402
 from veridoc.grounding import LLMVerifier, NLIVerifier  # noqa: E402
 from veridoc.llm import GroqLLM  # noqa: E402
 from veridoc.pipeline import GROUNDED  # noqa: E402
+from veridoc.rag import NAIVE_SYSTEM  # noqa: E402
 
 ANSWER_STATUSES = {"grounded", "partial", "unchecked", "unverified"}
 
@@ -51,8 +52,10 @@ def is_correct(answer: str, expect: list[str]) -> bool:
 
 
 def build(config: str, llm, embedder):
-    verifier = {"none": None, "llm": LLMVerifier(llm), "nli": NLIVerifier()}[config]
-    return VeriDoc(llm, verifier, embedder)
+    verifier = {"none": None, "llm": LLMVerifier(llm), "nli": NLIVerifier(),
+                "naive": None, "naive_llm": LLMVerifier(llm)}[config]
+    kwargs = {"generation_system": NAIVE_SYSTEM} if config.startswith("naive") else {}
+    return VeriDoc(llm, verifier, embedder, **kwargs)
 
 
 def run_config(config: str, spec: dict, llm, embedder) -> tuple[dict, list[dict]]:
@@ -87,7 +90,7 @@ def run_config(config: str, spec: dict, llm, embedder) -> tuple[dict, list[dict]
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--configs", nargs="+", default=["none", "llm", "nli"], choices=["none", "llm", "nli"])
+    parser.add_argument("--configs", nargs="+", default=["none", "llm", "nli"], choices=["none", "llm", "nli", "naive", "naive_llm"])
     parser.add_argument("--questions", default=str(ROOT / "eval" / "questions.json"))
     parser.add_argument("--tag", default="", help="suffix for the output files, e.g. _heldout")
     args = parser.parse_args()
@@ -114,7 +117,8 @@ def main() -> None:
     fmt = lambda v: "n/a" if v is None else f"{v:.0%}"  # noqa: E731
     lines = ["| Config | Answer rate | Abstain rate | Hallucination rate | Grounded precision | Time (s) |",
              "|---|---|---|---|---|---|"]
-    names = {"none": "Baseline RAG (no check)", "llm": "LLM verifier", "nli": "NLI verifier"}
+    names = {"none": "Baseline RAG (no check)", "llm": "LLM verifier", "nli": "NLI verifier",
+             "naive": "Naive prompt, no check", "naive_llm": "Naive prompt + LLM verifier"}
     for s in summaries:
         lines.append(f"| {names[s['config']]} | {fmt(s['answer_rate'])} | {fmt(s['abstain_rate'])} | "
                      f"{fmt(s['hallucination_rate'])} | {fmt(s['grounded_precision'])} | {s['seconds']} |")
