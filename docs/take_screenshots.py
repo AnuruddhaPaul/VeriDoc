@@ -108,6 +108,15 @@ def main():
                 browser.close()
                 return
 
+            if len(sys.argv) > 2 and sys.argv[2] == "nli":  # retake only the NLI shot, in a taller window
+                page.set_viewport_size({"width": W, "height": 1300})
+                set_mode(page, "NLI verifier")
+                ask(page, GROUNDED_Q2)
+                expand_sources(page)
+                shot(page, "shot_h_nli_grounded")
+                browser.close()
+                return
+
             shot(page, "shot_a_home")
 
             ask(page, GROUNDED_Q)
@@ -122,7 +131,7 @@ def main():
             ask(page, OFFTOPIC_Q)
             shot(page, "shot_e_offtopic")
 
-            # NLI verifier on a grounded question
+            # NLI verifier on a grounded question (retaken separately with a taller window: `... local nli`)
             clear(page)
             set_mode(page, "NLI verifier")
             ask(page, GROUNDED_Q2)
