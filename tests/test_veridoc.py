@@ -19,7 +19,7 @@ from veridoc.ingest import approx_tokens, chunk_pages, chunk_text, extract_pages
 from veridoc.pipeline import (
     GROUNDED, NOT_FOUND, PARTIAL, UNCHECKED, UNGROUNDED, UNVERIFIED, VeriDoc,
 )
-from veridoc.rag import is_not_found
+from veridoc.rag import clean_answer, is_not_found
 
 SAMPLE = Path(__file__).resolve().parent.parent / "sample_docs" / "northwind_handbook.pdf"
 LEAVE = "All full-time employees receive 25 days of paid annual leave per calendar year."
@@ -194,3 +194,20 @@ def test_nli_scores_single_sentence_premises():
     app = make_app(llm, verifier=NLIVerifier(predict=predict, window=3))
     r = app.ask("How many days of annual leave do employees get?")
     assert r.status == GROUNDED
+
+
+def test_clean_answer_normalises_live_model_quirks():
+    """Live finding: the model emits U+202F spaces and 【1】 citations, which broke claim splitting/NLI."""
+    raw = "Report it within\u202f2\u202fhours of discovery\u30101\u3011. Also 10:00\u202fto\u202f15:00 [2, 3]."
+    assert clean_answer(raw) == "Report it within 2 hours of discovery[1]. Also 10:00 to 15:00 [2, 3]."
+
+
+def test_eval_scorer_accepts_number_words_and_unicode_spaces():
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location("run_eval", Path(__file__).parent.parent / "eval" / "run_eval.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    assert mod.is_correct("up to three days per week", ["3"])
+    assert mod.is_correct("within\u202f2\u202fhours", ["2 hours"])
+    assert not mod.is_correct("up to four days", ["3"])

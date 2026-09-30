@@ -1,0 +1,28 @@
+{
+  "document": "sample_docs/northwind_handbook.pdf",
+  "note": "Held-out set written BEFORE any threshold tuning. Do not tune on these questions.",
+  "answerable": [
+    {"q": "How many paid sick days do employees get each year?", "expect": ["10"]},
+    {"q": "How long is parental leave for the secondary caregiver?", "expect": ["6 weeks"]},
+    {"q": "By what date must carried-over leave be used?", "expect": ["31 March"]},
+    {"q": "How long must new employees work on-site before they can work remotely?", "expect": ["4 weeks"]},
+    {"q": "When does the company pay the home-office stipend?", "expect": ["probation"]},
+    {"q": "For flights shorter than how many hours do employees fly economy?", "expect": ["6 hours"]},
+    {"q": "How often do passwords need to be changed?", "expect": ["180"]},
+    {"q": "How much is the employee referral bonus?", "expect": ["2,000"]},
+    {"q": "When does health insurance coverage start?", "expect": ["first day"]},
+    {"q": "After how many consecutive sick days is a medical certificate required?", "expect": ["3"]}
+  ],
+  "unanswerable": [
+    {"q": "How many paid sick days can be used to care for a family member?", "kind": "near-miss"},
+    {"q": "What is the daily meal reimbursement limit for international travel?", "kind": "near-miss"},
+    {"q": "What is the maximum nightly hotel rate employees may book?", "kind": "near-miss"},
+    {"q": "How much notice must an employee give when resigning?", "kind": "in-domain, absent"},
+    {"q": "Does the company reimburse gym memberships?", "kind": "in-domain, absent"},
+    {"q": "How many public holidays do employees get?", "kind": "near-miss"},
+    {"q": "Is the referral bonus also paid for hiring interns?", "kind": "near-miss"},
+    {"q": "How much is the relocation allowance for new hires?", "kind": "in-domain, absent"},
+    {"q": "How often must employees replace their multi-factor authentication token?", "kind": "near-miss"},
+    {"q": "Who founded Northwind Robotics and in what year?", "kind": "in-domain, absent"}
+  ]
+}

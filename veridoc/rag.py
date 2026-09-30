@@ -26,9 +26,20 @@ def build_context(retrieved: list[Retrieved]) -> str:
     )
 
 
+_EXOTIC_SPACES = re.compile(r"[       ]")
+_ODD_CITATION = re.compile(r"[【\[]\s*(\d+(?:\s*,\s*\d+)*)\s*[】\]]")
+
+
+def clean_answer(text: str) -> str:
+    """Normalise quirks seen in live model output: exotic spaces (U+202F) and 【1】-style citations."""
+    text = _EXOTIC_SPACES.sub(" ", text)
+    text = _ODD_CITATION.sub(lambda m: f"[{m.group(1)}]", text)
+    return re.sub(r"[ \t]+", " ", text).strip()
+
+
 def generate_answer(llm: LLM, question: str, retrieved: list[Retrieved]) -> str:
     user = f"SOURCES:\n{build_context(retrieved)}\n\nQUESTION: {question}\n\nANSWER:"
-    return llm.complete(GENERATION_SYSTEM, user, max_tokens=600).strip()
+    return clean_answer(llm.complete(GENERATION_SYSTEM, user, max_tokens=600))
 
 
 def is_not_found(answer: str) -> bool:

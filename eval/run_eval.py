@@ -15,8 +15,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 import time
+import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -32,8 +34,20 @@ from veridoc.pipeline import GROUNDED  # noqa: E402
 ANSWER_STATUSES = {"grounded", "partial", "unchecked", "unverified"}
 
 
+_NUMBER_WORDS = {"two": "2", "three": "3", "four": "4", "five": "5", "fourteen": "14",
+                 "sixteen": "16", "twenty-five": "25", "thirty": "30"}
+
+
+def _norm(text: str) -> str:
+    """Lower-case, unify Unicode spaces (the model emits U+202F) and spell small numbers as digits."""
+    text = re.sub(r"\s+", " ", unicodedata.normalize("NFKC", text).lower())
+    for word, digit in _NUMBER_WORDS.items():
+        text = re.sub(rf"\b{word}\b", digit, text)
+    return text
+
+
 def is_correct(answer: str, expect: list[str]) -> bool:
-    return all(token.lower() in answer.lower() for token in expect)
+    return all(_norm(token) in _norm(answer) for token in expect)
 
 
 def build(config: str, llm, embedder):
@@ -75,6 +89,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--configs", nargs="+", default=["none", "llm", "nli"], choices=["none", "llm", "nli"])
     parser.add_argument("--questions", default=str(ROOT / "eval" / "questions.json"))
+    parser.add_argument("--tag", default="", help="suffix for the output files, e.g. _heldout")
     args = parser.parse_args()
 
     load_dotenv(ROOT / ".env")
@@ -94,7 +109,7 @@ def main() -> None:
 
     out_dir = ROOT / "eval" / "results"
     out_dir.mkdir(exist_ok=True)
-    (out_dir / "results.json").write_text(json.dumps({"summary": summaries, "detail": detail}, indent=2))
+    (out_dir / f"results{args.tag}.json").write_text(json.dumps({"summary": summaries, "detail": detail}, indent=2))
 
     fmt = lambda v: "n/a" if v is None else f"{v:.0%}"  # noqa: E731
     lines = ["| Config | Answer rate | Abstain rate | Hallucination rate | Grounded precision | Time (s) |",
@@ -104,7 +119,7 @@ def main() -> None:
         lines.append(f"| {names[s['config']]} | {fmt(s['answer_rate'])} | {fmt(s['abstain_rate'])} | "
                      f"{fmt(s['hallucination_rate'])} | {fmt(s['grounded_precision'])} | {s['seconds']} |")
     table = "\n".join(lines)
-    (out_dir / "results.md").write_text(table + "\n")
+    (out_dir / f"results{args.tag}.md").write_text(table + "\n")
     print(table)
 
 
