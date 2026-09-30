@@ -77,6 +77,33 @@ def set_mode(page, label):
     settle(page)
 
 
+def run_hosted(page):
+    """Community Cloud wraps the app in an iframe and may show a 'wake up' button first."""
+    wake = page.get_by_role("button", name="Yes, get this app back up!")
+    try:
+        wake.wait_for(timeout=8_000)
+        wake.click()
+        print("app was asleep; woke it")
+    except Exception:
+        pass
+    page.wait_for_selector('iframe[title="streamlitApp"]', timeout=240_000)
+    ui = page.frame_locator('iframe[title="streamlitApp"]').first
+    frame = page.query_selector('iframe[title="streamlitApp"]').content_frame()
+    frame.wait_for_selector('button:has-text("Load sample handbook")', timeout=240_000)
+    frame.get_by_role("button", name="Load sample handbook").click()
+    settle(frame)
+    ask(frame, GROUNDED_Q)
+    txt = frame.locator('[data-testid="stMain"]').inner_text()
+    print("grounded question ->", "Grounded" in txt, "| '25 days' in answer:", "25 days" in txt)
+    page.screenshot(path=str(OUT / "hosted_grounded.png"))
+    clear(frame)
+    ask(frame, ABSENT_Q)
+    txt = frame.locator('[data-testid="stMain"]').inner_text()
+    print("unanswerable question -> 'Not found' shown:", "Not found" in txt)
+    page.screenshot(path=str(OUT / "hosted_not_found.png"))
+    print("api key visible in page text:", "gsk_" in page.content() or "gsk_" in txt)
+
+
 def main():
     target = sys.argv[1] if len(sys.argv) > 1 else "local"
     proc = None
@@ -96,17 +123,14 @@ def main():
         with sync_playwright() as p:
             browser = p.chromium.launch()
             page = browser.new_page(viewport={"width": W, "height": H})
-            page.goto(url, wait_until="networkidle")
-            page.get_by_role("button", name="Load sample handbook").click()
-            settle(page)
+            page.goto(url, wait_until="domcontentloaded", timeout=120_000)
             if prefix == "hosted":
-                ask(page, GROUNDED_Q)
-                page.screenshot(path=str(OUT / "hosted_grounded.png"))
-                clear(page)
-                ask(page, ABSENT_Q)
-                page.screenshot(path=str(OUT / "hosted_not_found.png"))
+                run_hosted(page)
                 browser.close()
                 return
+            page.wait_for_load_state("networkidle")
+            page.get_by_role("button", name="Load sample handbook").click()
+            settle(page)
 
             if len(sys.argv) > 2 and sys.argv[2] == "nli":  # retake only the NLI shot, in a taller window
                 page.set_viewport_size({"width": W, "height": 1300})

@@ -24,7 +24,7 @@ Form: https://forms.gle/rEvS7iFV3g6EPzX5A
 | Field | Answer |
 |---|---|
 | GitHub repository (must be PUBLIC) | https://github.com/AnuruddhaPaul/VeriDoc |
-| Hosted project link | (Streamlit Community Cloud URL) |
+| Hosted project link | https://veridoc-bgemx43smyhzo9wqhnaibd.streamlit.app |
 | Google Drive folder (Anyone with the link, Viewer) | (Drive URL) |
 
 ## What goes in the Drive folder
