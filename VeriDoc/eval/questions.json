@@ -1,0 +1,29 @@
+{
+  "document": "sample_docs/northwind_handbook.pdf",
+  "answerable": [
+    {"q": "How many days of annual leave do full-time employees get?", "expect": ["25"]},
+    {"q": "How many days of leave can be carried over to the next year?", "expect": ["5"]},
+    {"q": "How long is parental leave for the primary caregiver?", "expect": ["16"]},
+    {"q": "How many days per week can employees work remotely?", "expect": ["3"]},
+    {"q": "What are the core working hours?", "expect": ["10", "15"]},
+    {"q": "How much is the home-office stipend?", "expect": ["600"]},
+    {"q": "What is the daily meal reimbursement limit for domestic travel?", "expect": ["60"]},
+    {"q": "Within how many days must expense reports be submitted?", "expect": ["30"]},
+    {"q": "What is the minimum password length?", "expect": ["14"]},
+    {"q": "How quickly must a lost laptop be reported?", "expect": ["2 hours"]},
+    {"q": "What percentage of retirement contributions does the company match?", "expect": ["4"]},
+    {"q": "What is the annual learning budget?", "expect": ["1,500"]}
+  ],
+  "unanswerable": [
+    {"q": "What is the bereavement leave policy?", "kind": "in-domain, absent"},
+    {"q": "How many stock options do new hires receive?", "kind": "in-domain, absent"},
+    {"q": "What dental coverage does the health insurance include?", "kind": "in-domain, absent"},
+    {"q": "What is the company's policy on sabbaticals?", "kind": "in-domain, absent"},
+    {"q": "How much is the annual performance bonus?", "kind": "in-domain, absent"},
+    {"q": "Who is the CEO of Northwind Robotics?", "kind": "in-domain, absent"},
+    {"q": "Are employees allowed to bring dogs to the office?", "kind": "in-domain, absent"},
+    {"q": "What is the parking allowance for on-site employees?", "kind": "in-domain, absent"},
+    {"q": "What is the capital of France?", "kind": "off-topic"},
+    {"q": "Write a Python function that reverses a string.", "kind": "off-topic"}
+  ]
+}
