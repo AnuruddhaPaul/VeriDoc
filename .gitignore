@@ -6,3 +6,4 @@ chroma_db/
 .streamlit/secrets.toml
 .venv/
 docs/reference/
+deploy/veridoc_hf_space/
