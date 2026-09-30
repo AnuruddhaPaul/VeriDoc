@@ -56,8 +56,8 @@ for side in ("left_margin", "right_margin", "top_margin", "bottom_margin"):
     setattr(sec, side, Inches(1))
 
 normal = doc.styles["Normal"]
-normal.font.name, normal.font.size = "Calibri", Pt(11)
-normal.element.rPr.rFonts.set(qn("w:eastAsia"), "Calibri")
+normal.font.name, normal.font.size = "Times New Roman", Pt(12)
+normal.element.rPr.rFonts.set(qn("w:eastAsia"), "Times New Roman")
 normal.paragraph_format.space_after = Pt(6)
 normal.paragraph_format.line_spacing = 1.12
 
@@ -218,6 +218,7 @@ def callout(text, fill="FFF7E6", edge="C05621", size=10):
     t = doc.add_table(rows=1, cols=1)
     t.alignment = WD_TABLE_ALIGNMENT.CENTER
     t.autofit = False
+    t.rows[0]._tr.get_or_add_trPr().append(OxmlElement("w:cantSplit"))
     c = t.rows[0].cells[0]
     c.width = Inches(6.27)
     shade(c, fill)
@@ -322,9 +323,9 @@ kv_table([("NAME", "Anuruddha Paul"), ("ROLL NUMBER", "2328072"), ("BATCH", "GEN
           ("SUBMITTED TO", "Mr Sachin"), ("DATE", "30 September 2026")], widths=(1.7, 4.57), size=12)
 doc.add_paragraph().paragraph_format.space_after = Pt(30)
 para("**Project links**", size=11, color=NAVY, after=2)
-para(f"Source code: {LINKS['github']}", size=10, after=1)
-para(f"Live app: {LINKS['hosted'] or TBD}", size=10, after=1)
-para(f"Project folder (Google Drive): {LINKS['drive'] or TBD}", size=10, after=1)
+para(f"Project folder (Google Drive): {LINKS['drive'] or TBD}", size=11, after=2)
+para(f"Source code (GitHub): {LINKS['github']}", size=11, after=2)
+para(f"Live app: {LINKS['hosted'] or TBD}", size=11, after=2)
 
 # ------------------------------------------------------------------ 1
 h1("1. Problem Statement", page_break=True)
@@ -669,6 +670,7 @@ table(["Problem I hit", "How I solved it"], [
     ["My expectation was wrong: the baseline did not hallucinate.", "Reported it as it is, added the typical-prompt experiment, and read the answers by hand instead of trusting the automatic metric."],
     ["A file was truncated when my edit script failed on Windows’ default text encoding.", "Restored the file from git and used UTF-8 explicitly. A reminder to commit often."],
     ["The GitHub login stored on the machine had expired, so pushes failed.", "Committed locally and asked for a fresh sign-in."],
+    ["After deploying to Streamlit Community Cloud, my automated browser tests of the hosted app got HTTP 403 (“Access denied. Please check your network settings.”) from Groq on every question, while the same key worked from my computer. This suggests Groq blocks some cloud server addresses.", "Recorded it here rather than hiding it, and prepared a Hugging Face Spaces bundle (`deploy/`) as a fallback host. Anyone reviewing the live app should also check the screenshots in Section 10, which were taken on a local run."],
 ], widths=(3.2, 3.07), size=9)
 para("**What I learned.** A plausible design idea should be tested against a baseline before believing it: on this "
      "setup the baseline was already good, so the honest value of VeriDoc is visibility (page numbers, quotes, "
@@ -710,7 +712,7 @@ para("The main lesson is that the evaluation was harder to get right than the sy
 # ------------------------------------------------------------------ 14
 h1("14. References and Links")
 h2("Project links")
-kv_table([("Source code", LINKS["github"]), ("Live app", LINKS["hosted"] or TBD), ("Google Drive folder", LINKS["drive"] or TBD)], widths=(1.7, 4.57), size=10)
+kv_table([("Google Drive folder", LINKS["drive"] or TBD), ("Source code", LINKS["github"]), ("Live app", LINKS["hosted"] or TBD)], widths=(1.7, 4.57), size=11)
 h2("Libraries and services used")
 for txt in [
     "PyMuPDF documentation: https://pymupdf.readthedocs.io",

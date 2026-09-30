@@ -1,6 +1,7 @@
 VeriDoc: PDF question-answering system that verifies its own answers
 Anuruddha Paul | Roll 2328072 | GENAI 2026 | Submitted to: Mr Sachin
 
+Google Drive folder: https://drive.google.com/drive/folders/1CihEMRr5rTfl8hZEFtr6quBrCjBMTXE_
 GitHub repository : https://github.com/AnuruddhaPaul/VeriDoc
 Hosted app        : https://veridoc-bgemx43smyhzo9wqhnaibd.streamlit.app
 Report (PDF)      : docs/VeriDoc_Project_Report.pdf

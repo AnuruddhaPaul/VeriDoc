@@ -25,7 +25,7 @@ Form: https://forms.gle/rEvS7iFV3g6EPzX5A
 |---|---|
 | GitHub repository (must be PUBLIC) | https://github.com/AnuruddhaPaul/VeriDoc |
 | Hosted project link | https://veridoc-bgemx43smyhzo9wqhnaibd.streamlit.app |
-| Google Drive folder (Anyone with the link, Viewer) | (Drive URL) |
+| Google Drive folder (Anyone with the link, Viewer) | https://drive.google.com/drive/folders/1CihEMRr5rTfl8hZEFtr6quBrCjBMTXE_ |
 
 ## What goes in the Drive folder
 1. `VeriDoc_source.zip` (the repo without `.venv/` and without `.env`; run `git archive --format=zip -o VeriDoc_source.zip HEAD` from the repo root; this cannot include `.env` because it is not tracked)
