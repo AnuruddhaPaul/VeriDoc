@@ -1,0 +1,492 @@
+{
+  "summary": [
+    {
+      "config": "none",
+      "answer_rate": 1.0,
+      "abstain_rate": 1.0,
+      "hallucination_rate": 0.0,
+      "grounded_precision": null,
+      "n_answerable": 10,
+      "n_unanswerable": 10,
+      "seconds": 66.2
+    },
+    {
+      "config": "llm",
+      "answer_rate": 1.0,
+      "abstain_rate": 1.0,
+      "hallucination_rate": 0.0,
+      "grounded_precision": 1.0,
+      "n_answerable": 10,
+      "n_unanswerable": 10,
+      "seconds": 159.2
+    },
+    {
+      "config": "nli",
+      "answer_rate": 0.8,
+      "abstain_rate": 1.0,
+      "hallucination_rate": 0.0,
+      "grounded_precision": 1.0,
+      "n_answerable": 10,
+      "n_unanswerable": 10,
+      "seconds": 85.5
+    }
+  ],
+  "detail": {
+    "none": [
+      {
+        "type": "answerable",
+        "q": "How many paid sick days do employees get each year?",
+        "status": "unchecked",
+        "answer": "Employees receive 10 days of paid sick leave per year [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How long is parental leave for the secondary caregiver?",
+        "status": "unchecked",
+        "answer": "Parental leave for the secondary caregiver is 6 weeks at full pay[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "By what date must carried-over leave be used?",
+        "status": "unchecked",
+        "answer": "Carried\u2011over leave must be used by 31 March of the following year[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How long must new employees work on-site before they can work remotely?",
+        "status": "unchecked",
+        "answer": "New employees must work on\u2011site for the first 4 weeks before they are allowed to work remotely [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "When does the company pay the home-office stipend?",
+        "status": "unchecked",
+        "answer": "The company pays the one\u2011time home\u2011office stipend of 600 USD after the employee\u2019s probation period is complete[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "For flights shorter than how many hours do employees fly economy?",
+        "status": "unchecked",
+        "answer": "Employees fly economy class for any flight shorter than 6 hours [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How often do passwords need to be changed?",
+        "status": "unchecked",
+        "answer": "Passwords must be changed every 180 days[1]",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How much is the employee referral bonus?",
+        "status": "unchecked",
+        "answer": "The employee referral bonus is 2,000 USD[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "When does health insurance coverage start?",
+        "status": "unchecked",
+        "answer": "Health insurance starts on the first day of the month after the employee joins [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "After how many consecutive sick days is a medical certificate required?",
+        "status": "unchecked",
+        "answer": "A medical certificate is required when sick leave exceeds three consecutive days[1].",
+        "correct": true
+      },
+      {
+        "type": "unanswerable",
+        "q": "How many paid sick days can be used to care for a family member?",
+        "kind": "near-miss",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the daily meal reimbursement limit for international travel?",
+        "kind": "near-miss",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the maximum nightly hotel rate employees may book?",
+        "kind": "near-miss",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "How much notice must an employee give when resigning?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Does the company reimburse gym memberships?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "How many public holidays do employees get?",
+        "kind": "near-miss",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Is the referral bonus also paid for hiring interns?",
+        "kind": "near-miss",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "How much is the relocation allowance for new hires?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "How often must employees replace their multi-factor authentication token?",
+        "kind": "near-miss",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Who founded Northwind Robotics and in what year?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      }
+    ],
+    "llm": [
+      {
+        "type": "answerable",
+        "q": "How many paid sick days do employees get each year?",
+        "status": "grounded",
+        "answer": "Employees receive 10 days of paid sick leave per year [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How long is parental leave for the secondary caregiver?",
+        "status": "grounded",
+        "answer": "Parental leave for the secondary caregiver is 6 weeks at full pay[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "By what date must carried-over leave be used?",
+        "status": "grounded",
+        "answer": "Unused carried\u2011over leave must be used by 31 March of the following year [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How long must new employees work on-site before they can work remotely?",
+        "status": "grounded",
+        "answer": "New employees must work on\u2011site for the first 4 weeks before they are allowed to work remotely [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "When does the company pay the home-office stipend?",
+        "status": "grounded",
+        "answer": "The company pays the one\u2011time home\u2011office stipend after the employee\u2019s probation period is complete[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "For flights shorter than how many hours do employees fly economy?",
+        "status": "grounded",
+        "answer": "Employees fly economy class for any flight shorter than 6 hours [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How often do passwords need to be changed?",
+        "status": "grounded",
+        "answer": "Passwords must be changed every 180 days [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How much is the employee referral bonus?",
+        "status": "grounded",
+        "answer": "The employee referral bonus is 2,000 USD[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "When does health insurance coverage start?",
+        "status": "grounded",
+        "answer": "Health insurance starts on the first day of the month after the employee joins [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "After how many consecutive sick days is a medical certificate required?",
+        "status": "grounded",
+        "answer": "A medical certificate is required when sick leave exceeds three consecutive days[1].",
+        "correct": true
+      },
+      {
+        "type": "unanswerable",
+        "q": "How many paid sick days can be used to care for a family member?",
+        "kind": "near-miss",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the daily meal reimbursement limit for international travel?",
+        "kind": "near-miss",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the maximum nightly hotel rate employees may book?",
+        "kind": "near-miss",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "How much notice must an employee give when resigning?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Does the company reimburse gym memberships?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "How many public holidays do employees get?",
+        "kind": "near-miss",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Is the referral bonus also paid for hiring interns?",
+        "kind": "near-miss",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "How much is the relocation allowance for new hires?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "How often must employees replace their multi-factor authentication token?",
+        "kind": "near-miss",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Who founded Northwind Robotics and in what year?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      }
+    ],
+    "nli": [
+      {
+        "type": "answerable",
+        "q": "How many paid sick days do employees get each year?",
+        "status": "grounded",
+        "answer": "Employees receive 10 days of paid sick leave per year [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How long is parental leave for the secondary caregiver?",
+        "status": "grounded",
+        "answer": "Parental leave for the secondary caregiver is 6 weeks at full pay [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "By what date must carried-over leave be used?",
+        "status": "grounded",
+        "answer": "Carried\u2011over leave must be used by 31 March of the following year[1]",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How long must new employees work on-site before they can work remotely?",
+        "status": "ungrounded",
+        "answer": "I could not verify an answer against the document, so I am not showing one. The unverified draft is available below.",
+        "correct": false
+      },
+      {
+        "type": "answerable",
+        "q": "When does the company pay the home-office stipend?",
+        "status": "ungrounded",
+        "answer": "I could not verify an answer against the document, so I am not showing one. The unverified draft is available below.",
+        "correct": false
+      },
+      {
+        "type": "answerable",
+        "q": "For flights shorter than how many hours do employees fly economy?",
+        "status": "grounded",
+        "answer": "Employees fly economy class for any flight shorter than 6 hours [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How often do passwords need to be changed?",
+        "status": "grounded",
+        "answer": "Passwords must be changed every 180 days [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How much is the employee referral bonus?",
+        "status": "grounded",
+        "answer": "The employee referral bonus is 2,000 USD[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "When does health insurance coverage start?",
+        "status": "grounded",
+        "answer": "Health insurance starts on the first day of the month after the employee joins [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "After how many consecutive sick days is a medical certificate required?",
+        "status": "grounded",
+        "answer": "A medical certificate is required when sick leave exceeds three consecutive days[1].",
+        "correct": true
+      },
+      {
+        "type": "unanswerable",
+        "q": "How many paid sick days can be used to care for a family member?",
+        "kind": "near-miss",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the daily meal reimbursement limit for international travel?",
+        "kind": "near-miss",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the maximum nightly hotel rate employees may book?",
+        "kind": "near-miss",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "How much notice must an employee give when resigning?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Does the company reimburse gym memberships?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "How many public holidays do employees get?",
+        "kind": "near-miss",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Is the referral bonus also paid for hiring interns?",
+        "kind": "near-miss",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "How much is the relocation allowance for new hires?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "How often must employees replace their multi-factor authentication token?",
+        "kind": "near-miss",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Who founded Northwind Robotics and in what year?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      }
+    ]
+  }
+}

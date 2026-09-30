@@ -1,0 +1,358 @@
+{
+  "summary": [
+    {
+      "config": "naive",
+      "answer_rate": 1.0,
+      "abstain_rate": 0.2,
+      "hallucination_rate": 0.8,
+      "grounded_precision": null,
+      "n_answerable": 12,
+      "n_unanswerable": 10,
+      "seconds": 62.5
+    },
+    {
+      "config": "naive_llm",
+      "answer_rate": 1.0,
+      "abstain_rate": 0.7,
+      "hallucination_rate": 0.3,
+      "grounded_precision": 1.0,
+      "n_answerable": 12,
+      "n_unanswerable": 10,
+      "seconds": 225.0
+    }
+  ],
+  "detail": {
+    "naive": [
+      {
+        "type": "answerable",
+        "q": "How many days of annual leave do full-time employees get?",
+        "status": "unchecked",
+        "answer": "Full\u2011time employees are entitled to **25 days of paid annual leave per calendar year**[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How many days of leave can be carried over to the next year?",
+        "status": "unchecked",
+        "answer": "Employees may carry over a maximum of **5 days** of unused annual leave to the following year [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How long is parental leave for the primary caregiver?",
+        "status": "unchecked",
+        "answer": "The handbook states that parental leave for the primary caregiver is **16 weeks of paid leave**[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How many days per week can employees work remotely?",
+        "status": "unchecked",
+        "answer": "Employees may work remotely up to three days per week, subject to manager approval[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What are the core working hours?",
+        "status": "unchecked",
+        "answer": "The core working hours are 10:00 to 15:00 in each employee\u2019s local time zone[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How much is the home-office stipend?",
+        "status": "unchecked",
+        "answer": "The company provides a one\u2011time home\u2011office stipend of **600 USD** after the probation period is completed[2].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What is the daily meal reimbursement limit for domestic travel?",
+        "status": "unchecked",
+        "answer": "The daily meal reimbursement limit for domestic business travel is **up to $60 USD per day**[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "Within how many days must expense reports be submitted?",
+        "status": "unchecked",
+        "answer": "Expense reports must be submitted within **30 days** of the expense [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What is the minimum password length?",
+        "status": "unchecked",
+        "answer": "The handbook states that passwords must be at least **14 characters** long[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How quickly must a lost laptop be reported?",
+        "status": "unchecked",
+        "answer": "A lost or stolen laptop (or phone) must be reported to the security team within **2 hours** of discovery [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What percentage of retirement contributions does the company match?",
+        "status": "unchecked",
+        "answer": "The company matches employee retirement contributions up to **4 percent of salary** [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What is the annual learning budget?",
+        "status": "unchecked",
+        "answer": "The company provides each employee with a learning budget of **$1,500 USD per year** for courses, books, and conferences [1].",
+        "correct": true
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the bereavement leave policy?",
+        "kind": "in-domain, absent",
+        "status": "unchecked",
+        "answer": "The employee handbook excerpts you provided do not include any information about a bereavement\u2011leave policy. The sections you shared cover leave (annual, sick, parental), travel and expenses, benefits and learning, and remote\u2011work arrangements, but none mention bereavement leave. Therefore, based on the available sources, the bereavement\u2011leave policy is not specified.",
+        "hallucinated": true
+      },
+      {
+        "type": "unanswerable",
+        "q": "How many stock options do new hires receive?",
+        "kind": "in-domain, absent",
+        "status": "unchecked",
+        "answer": "The employee handbook does not specify any stock\u2011option grant for new hires. None of the provided sections mention a stock\u2011option award, so the number of stock options that new hires receive is not defined in the available documentation.",
+        "hallucinated": true
+      },
+      {
+        "type": "unanswerable",
+        "q": "What dental coverage does the health insurance include?",
+        "kind": "in-domain, absent",
+        "status": "unchecked",
+        "answer": "The handbook\u2019s health\u2011insurance description does not specify any dental coverage details. It only states that health insurance begins on the first day of the month after an employee joins, but it does not mention whether dental care is included or what the dental benefits entail. Therefore, based on the provided sources, the dental coverage (if any) is not described.",
+        "hallucinated": true
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the company's policy on sabbaticals?",
+        "kind": "in-domain, absent",
+        "status": "unchecked",
+        "answer": "The employee handbook excerpts you provided do not include any mention of a sabbatical policy. The sections you shared cover leave (annual, sick, parental), travel and expenses, remote work, and benefits, but there is no information about sabbaticals in those pages. Therefore, based on the available sources, Northwind Robotics does not appear to have a documented sabbatical policy in the sections provided.",
+        "hallucinated": true
+      },
+      {
+        "type": "unanswerable",
+        "q": "How much is the annual performance bonus?",
+        "kind": "in-domain, absent",
+        "status": "unchecked",
+        "answer": "The employee handbook does not provide any information about an annual performance bonus, so the amount of such a bonus is not specified in the available sources.",
+        "hallucinated": true
+      },
+      {
+        "type": "unanswerable",
+        "q": "Who is the CEO of Northwind Robotics?",
+        "kind": "in-domain, absent",
+        "status": "unchecked",
+        "answer": "The employee handbook excerpts provided do not contain any information about the identity of Northwind Robotics\u2019 chief executive officer. Therefore, based on the available sources, the CEO\u2019s name cannot be determined.",
+        "hallucinated": true
+      },
+      {
+        "type": "unanswerable",
+        "q": "Are employees allowed to bring dogs to the office?",
+        "kind": "in-domain, absent",
+        "status": "unchecked",
+        "answer": "The handbook does not contain any provision about pets or dogs in the workplace, so there is no stated policy permitting\u2014or prohibiting\u2014employees from bringing dogs to the office. In the absence of a specific rule, employees should assume that bringing a dog is not covered by the handbook and should check with their manager or facilities team for any unofficial guidelines.",
+        "hallucinated": true
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the parking allowance for on-site employees?",
+        "kind": "in-domain, absent",
+        "status": "unchecked",
+        "answer": "The employee handbook does not mention a parking allowance for on\u2011site employees. No provision for such a benefit is listed in the sections provided.",
+        "hallucinated": true
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the capital of France?",
+        "kind": "off-topic",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Write a Python function that reverses a string.",
+        "kind": "off-topic",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      }
+    ],
+    "naive_llm": [
+      {
+        "type": "answerable",
+        "q": "How many days of annual leave do full-time employees get?",
+        "status": "grounded",
+        "answer": "Full\u2011time employees are entitled to **25 days of paid annual leave per calendar year**[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How many days of leave can be carried over to the next year?",
+        "status": "grounded",
+        "answer": "Employees may carry over a maximum of 5 days of unused annual leave to the following year [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How long is parental leave for the primary caregiver?",
+        "status": "grounded",
+        "answer": "The handbook states that parental leave for the primary caregiver is **16 weeks of paid leave**[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How many days per week can employees work remotely?",
+        "status": "grounded",
+        "answer": "Employees may work remotely up to three days per week, subject to manager approval[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What are the core working hours?",
+        "status": "grounded",
+        "answer": "The core working hours are 10:00 to 15:00 in each employee\u2019s local time zone[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How much is the home-office stipend?",
+        "status": "grounded",
+        "answer": "The company provides a one\u2011time home\u2011office stipend of **600 USD** after the probation period is completed[2].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What is the daily meal reimbursement limit for domestic travel?",
+        "status": "grounded",
+        "answer": "The daily meal reimbursement limit for domestic business travel is **up to $60 USD per day**[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "Within how many days must expense reports be submitted?",
+        "status": "grounded",
+        "answer": "Expense reports must be submitted within **30 days** of the expense [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What is the minimum password length?",
+        "status": "grounded",
+        "answer": "The handbook states that passwords must be at least **14 characters** long[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How quickly must a lost laptop be reported?",
+        "status": "grounded",
+        "answer": "A lost or stolen laptop (or phone) must be reported to the security team within **2 hours** of discovery [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What percentage of retirement contributions does the company match?",
+        "status": "grounded",
+        "answer": "The company matches employee retirement contributions up to **4 percent of salary** [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What is the annual learning budget?",
+        "status": "grounded",
+        "answer": "The company provides each employee with a learning budget of **1,500 USD per year** for courses, books, and conferences [1].",
+        "correct": true
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the bereavement leave policy?",
+        "kind": "in-domain, absent",
+        "status": "partial",
+        "answer": "The employee handbook excerpts you provided do not include any information about a bereavement\u2011leave policy. The sections you shared cover leave (annual, sick, parental), travel and expenses, benefits and learning, and remote\u2011work arrangements, but none mention bereavement leave. Therefore, based on the available sources, the bereavement\u2011leave policy is not specified.",
+        "hallucinated": true
+      },
+      {
+        "type": "unanswerable",
+        "q": "How many stock options do new hires receive?",
+        "kind": "in-domain, absent",
+        "status": "ungrounded",
+        "answer": "I could not verify an answer against the document, so I am not showing one. The unverified draft is available below.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What dental coverage does the health insurance include?",
+        "kind": "in-domain, absent",
+        "status": "grounded",
+        "answer": "The handbook\u2019s health\u2011insurance description does not specify any dental coverage details. It only states that health insurance begins on the first day of the month after an employee joins, but it does not mention whether dental care is included or what the dental benefits entail\u30101\u2020L1-L3\u3011. Therefore, based on the provided sections, the specific dental coverage (if any) is not described in the employee handbook.",
+        "hallucinated": true
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the company's policy on sabbaticals?",
+        "kind": "in-domain, absent",
+        "status": "partial",
+        "answer": "The employee handbook excerpts you provided do not include any mention of a sabbatical policy. The sections you shared cover leave (annual, sick, parental), travel and expenses, remote work, and benefits, but there is no information about sabbaticals in those pages. Therefore, based on the available sources, Northwind Robotics does not appear to have a documented sabbatical policy in the sections provided.",
+        "hallucinated": true
+      },
+      {
+        "type": "unanswerable",
+        "q": "How much is the annual performance bonus?",
+        "kind": "in-domain, absent",
+        "status": "ungrounded",
+        "answer": "I could not verify an answer against the document, so I am not showing one. The unverified draft is available below.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Who is the CEO of Northwind Robotics?",
+        "kind": "in-domain, absent",
+        "status": "ungrounded",
+        "answer": "I could not verify an answer against the document, so I am not showing one. The unverified draft is available below.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Are employees allowed to bring dogs to the office?",
+        "kind": "in-domain, absent",
+        "status": "ungrounded",
+        "answer": "I could not verify an answer against the document, so I am not showing one. The unverified draft is available below.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the parking allowance for on-site employees?",
+        "kind": "in-domain, absent",
+        "status": "ungrounded",
+        "answer": "I could not verify an answer against the document, so I am not showing one. The unverified draft is available below.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the capital of France?",
+        "kind": "off-topic",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Write a Python function that reverses a string.",
+        "kind": "off-topic",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      }
+    ]
+  }
+}

@@ -10,7 +10,7 @@ from .embeddings import Embedder, SentenceTransformerEmbedder
 from .grounding import GroundingReport, VerificationError, Verifier
 from .ingest import Chunk, chunk_pages, extract_pages
 from .llm import LLM
-from .rag import generate_answer, is_not_found
+from .rag import GENERATION_SYSTEM, generate_answer, is_not_found
 from .store import Retrieved, VectorStore
 
 GROUNDED = "grounded"  # every claim backed by a source
@@ -36,6 +36,7 @@ class Result:
     report: GroundingReport | None = None
     sources: list[Retrieved] = field(default_factory=list)
     timings: dict[str, float] = field(default_factory=dict)
+    model: str = ""  # which LLM produced the answer (differs from the default only after a rate-limit fallback)
 
     @property
     def abstained(self) -> bool:
@@ -51,9 +52,11 @@ class VeriDoc:
         top_k: int = config.TOP_K,
         min_similarity: float = config.MIN_SIMILARITY,
         persist_dir: str | None = None,
+        generation_system: str = GENERATION_SYSTEM,
     ):
         self.llm = llm
         self.verifier = verifier
+        self.generation_system = generation_system
         self.top_k = top_k
         self.min_similarity = min_similarity
         self.store = VectorStore(embedder or SentenceTransformerEmbedder(), persist_dir)
@@ -69,6 +72,11 @@ class VeriDoc:
         return len(chunks)
 
     def ask(self, question: str) -> Result:
+        result = self._ask(question)
+        result.model = getattr(self.llm, "last_model", "")
+        return result
+
+    def _ask(self, question: str) -> Result:
         timings: dict[str, float] = {}
         t0 = time.perf_counter()
         retrieved = self.store.query(question, self.top_k)
@@ -78,7 +86,7 @@ class VeriDoc:
             return Result(question, NOT_FOUND, NOT_FOUND_MESSAGE, sources=retrieved, timings=timings)
 
         t0 = time.perf_counter()
-        draft = generate_answer(self.llm, question, retrieved)
+        draft = generate_answer(self.llm, question, retrieved, self.generation_system)
         timings["generate"] = time.perf_counter() - t0
         if is_not_found(draft):
             return Result(question, NOT_FOUND, NOT_FOUND_MESSAGE, draft, sources=retrieved, timings=timings)

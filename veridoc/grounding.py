@@ -167,13 +167,20 @@ class NLIVerifier:
         self.window = window
 
     def _windows(self, retrieved: list[Retrieved]) -> list[tuple[int, str]]:
-        """Sliding sentence windows keep premises short enough for the NLI model."""
-        out = []
+        """Candidate premises: every single sentence, plus sliding multi-sentence windows.
+
+        Single sentences matter: the small NLI model often scores a claim ~0.99 against the one
+        sentence that states it but ~0.00 once a neighbouring sentence is added (seen live).
+        The verifier takes the best-scoring premise, so extra candidates can only help recall.
+        """
+        out: list[tuple[int, str]] = []
         for rank, r in enumerate(retrieved, start=1):
             sentences = split_sentences(r.chunk.text) or [r.chunk.text]
-            for i in range(0, max(1, len(sentences) - self.window + 2), max(1, self.window - 1)):
-                out.append((rank, " ".join(sentences[i : i + self.window])))
-        return out
+            out.extend((rank, s) for s in sentences)
+            if self.window > 1:
+                for i in range(0, max(1, len(sentences) - self.window + 2), max(1, self.window - 1)):
+                    out.append((rank, " ".join(sentences[i : i + self.window])))
+        return list(dict.fromkeys(out))
 
     def verify(self, answer: str, retrieved: list[Retrieved]) -> GroundingReport:
         claims = split_claims(answer)

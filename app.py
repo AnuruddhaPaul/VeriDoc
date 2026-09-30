@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from veridoc import VeriDoc
 from veridoc.grounding import LLMVerifier, NLIVerifier
 from veridoc.llm import GroqLLM, MissingAPIKey
+from veridoc.rag import GENERATION_SYSTEM, NAIVE_SYSTEM
 from veridoc.render import badge, escape_dollars, highlight_html
 
 ROOT = Path(__file__).parent
@@ -51,6 +52,11 @@ with st.sidebar:
         help="LLM: a second model call must quote evidence for every claim. "
         "NLI: a local entailment model scores each sentence. Off: plain RAG, for comparison.",
     )
+    naive_prompt = st.checkbox(
+        "Typical chatbot prompt (comparison)",
+        help="Swaps VeriDoc's strict 'sources only, else NOT_FOUND' prompt for a plain 'use the context' prompt, "
+        "like an ordinary RAG chatbot. Use it with grounding Off to see unchecked answers.",
+    )
     top_k = st.slider("Chunks retrieved (top-k)", 1, 8, 4)
     min_sim = st.slider("Off-topic cutoff (min similarity)", 0.0, 0.6, 0.15, 0.01,
                         help="If even the best chunk is less similar than this, VeriDoc abstains without calling the LLM.")
@@ -89,6 +95,7 @@ if files and st.session_state.get("signature") != signature:
 app: VeriDoc | None = st.session_state.get("app")
 if app is not None and files:  # settings can change without re-indexing
     app.llm, app.top_k, app.min_similarity = llm, top_k, min_sim
+    app.generation_system = NAIVE_SYSTEM if naive_prompt else GENERATION_SYSTEM
     app.verifier = {
         "LLM verifier": lambda: LLMVerifier(llm),
         "NLI verifier": get_nli_verifier,
@@ -137,7 +144,8 @@ def render_result(result):
                     unsafe_allow_html=True,
                 )
     if result.timings:
-        st.caption(" · ".join(f"{k} {v:.2f}s" for k, v in result.timings.items()))
+        model = f" · model {result.model}" if result.model else ""
+        st.caption(" · ".join(f"{k} {v:.2f}s" for k, v in result.timings.items()) + model)
 
 
 st.header("Ask your document")

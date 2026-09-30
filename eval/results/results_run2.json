@@ -1,0 +1,534 @@
+{
+  "summary": [
+    {
+      "config": "none",
+      "answer_rate": 1.0,
+      "abstain_rate": 1.0,
+      "hallucination_rate": 0.0,
+      "grounded_precision": null,
+      "n_answerable": 12,
+      "n_unanswerable": 10,
+      "seconds": 57.6
+    },
+    {
+      "config": "llm",
+      "answer_rate": 1.0,
+      "abstain_rate": 1.0,
+      "hallucination_rate": 0.0,
+      "grounded_precision": 1.0,
+      "n_answerable": 12,
+      "n_unanswerable": 10,
+      "seconds": 155.9
+    },
+    {
+      "config": "nli",
+      "answer_rate": 0.9166666666666666,
+      "abstain_rate": 1.0,
+      "hallucination_rate": 0.0,
+      "grounded_precision": 1.0,
+      "n_answerable": 12,
+      "n_unanswerable": 10,
+      "seconds": 99.4
+    }
+  ],
+  "detail": {
+    "none": [
+      {
+        "type": "answerable",
+        "q": "How many days of annual leave do full-time employees get?",
+        "status": "unchecked",
+        "answer": "Full-time employees receive 25 days of paid annual leave per calendar year [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How many days of leave can be carried over to the next year?",
+        "status": "unchecked",
+        "answer": "Unused leave can be carried over up to a maximum of 5 days [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How long is parental leave for the primary caregiver?",
+        "status": "unchecked",
+        "answer": "Parental leave for the primary caregiver is 16 weeks at full pay[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How many days per week can employees work remotely?",
+        "status": "unchecked",
+        "answer": "Employees may work remotely up to three days per week [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What are the core working hours?",
+        "status": "unchecked",
+        "answer": "The core working hours are 10:00 to 15:00 local time[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How much is the home-office stipend?",
+        "status": "unchecked",
+        "answer": "The company provides a one\u2011time home\u2011office stipend of 600 USD[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What is the daily meal reimbursement limit for domestic travel?",
+        "status": "unchecked",
+        "answer": "Domestic business travel meals are reimbursed up to 60 USD per day[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "Within how many days must expense reports be submitted?",
+        "status": "unchecked",
+        "answer": "Expense reports must be submitted within 30 days of the expense [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What is the minimum password length?",
+        "status": "unchecked",
+        "answer": "Passwords must be at least 14 characters long [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How quickly must a lost laptop be reported?",
+        "status": "unchecked",
+        "answer": "A lost or stolen laptop must be reported to the security team within 2 hours of discovery[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What percentage of retirement contributions does the company match?",
+        "status": "unchecked",
+        "answer": "The company matches employee retirement contributions up to 4 percent of salary[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What is the annual learning budget?",
+        "status": "unchecked",
+        "answer": "Each employee has a learning budget of 1,500 USD per year for courses, books, and conferences[1].",
+        "correct": true
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the bereavement leave policy?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "How many stock options do new hires receive?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What dental coverage does the health insurance include?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the company's policy on sabbaticals?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "How much is the annual performance bonus?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Who is the CEO of Northwind Robotics?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Are employees allowed to bring dogs to the office?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the parking allowance for on-site employees?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the capital of France?",
+        "kind": "off-topic",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Write a Python function that reverses a string.",
+        "kind": "off-topic",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      }
+    ],
+    "llm": [
+      {
+        "type": "answerable",
+        "q": "How many days of annual leave do full-time employees get?",
+        "status": "grounded",
+        "answer": "Full-time employees receive 25 days of paid annual leave per calendar year [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How many days of leave can be carried over to the next year?",
+        "status": "grounded",
+        "answer": "Unused leave can be carried over up to a maximum of 5 days [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How long is parental leave for the primary caregiver?",
+        "status": "grounded",
+        "answer": "Parental leave for the primary caregiver is 16 weeks at full pay[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How many days per week can employees work remotely?",
+        "status": "grounded",
+        "answer": "Employees may work remotely up to three days per week [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What are the core working hours?",
+        "status": "grounded",
+        "answer": "The core working hours are 10:00 to 15:00 local time[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How much is the home-office stipend?",
+        "status": "grounded",
+        "answer": "The company provides a one\u2011time home\u2011office stipend of 600 USD[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What is the daily meal reimbursement limit for domestic travel?",
+        "status": "grounded",
+        "answer": "Domestic business travel meals are reimbursed up to 60 USD per day[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "Within how many days must expense reports be submitted?",
+        "status": "grounded",
+        "answer": "Expense reports must be submitted within 30 days of the expense [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What is the minimum password length?",
+        "status": "grounded",
+        "answer": "Passwords must be at least 14 characters long [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How quickly must a lost laptop be reported?",
+        "status": "grounded",
+        "answer": "A lost or stolen laptop must be reported to the security team within 2 hours of discovery[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What percentage of retirement contributions does the company match?",
+        "status": "grounded",
+        "answer": "The company matches employee retirement contributions up to 4 percent of salary[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What is the annual learning budget?",
+        "status": "grounded",
+        "answer": "The annual learning budget is 1,500 USD per employee [1].",
+        "correct": true
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the bereavement leave policy?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "How many stock options do new hires receive?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What dental coverage does the health insurance include?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the company's policy on sabbaticals?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "How much is the annual performance bonus?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Who is the CEO of Northwind Robotics?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Are employees allowed to bring dogs to the office?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the parking allowance for on-site employees?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the capital of France?",
+        "kind": "off-topic",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Write a Python function that reverses a string.",
+        "kind": "off-topic",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      }
+    ],
+    "nli": [
+      {
+        "type": "answerable",
+        "q": "How many days of annual leave do full-time employees get?",
+        "status": "grounded",
+        "answer": "Full-time employees receive 25 days of paid annual leave per calendar year [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How many days of leave can be carried over to the next year?",
+        "status": "grounded",
+        "answer": "Unused leave can be carried over up to a maximum of 5 days [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How long is parental leave for the primary caregiver?",
+        "status": "grounded",
+        "answer": "Parental leave for the primary caregiver is 16 weeks at full pay[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How many days per week can employees work remotely?",
+        "status": "grounded",
+        "answer": "Employees may work remotely up to three days per week [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What are the core working hours?",
+        "status": "grounded",
+        "answer": "The core working hours are 10:00 to 15:00 local time[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How much is the home-office stipend?",
+        "status": "grounded",
+        "answer": "The company provides a one\u2011time home\u2011office stipend of 600 USD[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What is the daily meal reimbursement limit for domestic travel?",
+        "status": "grounded",
+        "answer": "Domestic travel meals are reimbursed up to 60 USD per day[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "Within how many days must expense reports be submitted?",
+        "status": "grounded",
+        "answer": "Expense reports must be submitted within 30 days of the expense [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What is the minimum password length?",
+        "status": "grounded",
+        "answer": "Passwords must be at least 14 characters long [1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "How quickly must a lost laptop be reported?",
+        "status": "ungrounded",
+        "answer": "I could not verify an answer against the document, so I am not showing one. The unverified draft is available below.",
+        "correct": false
+      },
+      {
+        "type": "answerable",
+        "q": "What percentage of retirement contributions does the company match?",
+        "status": "grounded",
+        "answer": "The company matches employee retirement contributions up to 4 percent of salary[1].",
+        "correct": true
+      },
+      {
+        "type": "answerable",
+        "q": "What is the annual learning budget?",
+        "status": "grounded",
+        "answer": "The annual learning budget is 1,500 USD per employee [1].",
+        "correct": true
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the bereavement leave policy?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "How many stock options do new hires receive?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What dental coverage does the health insurance include?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the company's policy on sabbaticals?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "How much is the annual performance bonus?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Who is the CEO of Northwind Robotics?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Are employees allowed to bring dogs to the office?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the parking allowance for on-site employees?",
+        "kind": "in-domain, absent",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "What is the capital of France?",
+        "kind": "off-topic",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      },
+      {
+        "type": "unanswerable",
+        "q": "Write a Python function that reverses a string.",
+        "kind": "off-topic",
+        "status": "not_found",
+        "answer": "Not found in the document.",
+        "hallucinated": false
+      }
+    ]
+  }
+}
